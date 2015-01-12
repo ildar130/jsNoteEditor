@@ -1,0 +1,287 @@
+/*
+
+Copyright (c) 2014 Ildar Ahmadullin
+
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+*/
+
+.clear {
+    clear: both;
+}
+
+.noteeditor .notesheet {
+    position: relative;
+    width: 100%;
+    height: 390px;
+    background: #eee;
+    background: #eee url(images/lines.png) repeat-x 0 150px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.noteeditor .notesheet .cursor {
+    position: absolute;
+    width: 10px;
+    height: 86px;
+    left: 63px;
+    top: 135px;
+    background: rgba(200, 0, 0, 0.3);
+    display: none;
+}
+.noteeditor .notesheet .cursor.on {
+    display: block;
+}
+
+/* Toolbar */
+.noteeditor .toolbar {}
+.noteeditor .toolbar .panel {
+    float: left;
+    margin-right: 10px;
+}
+.noteeditor .toolbar .note_attributes {
+}
+.noteeditor .toolbar .note_attributes label.checkbox_button {}
+.noteeditor .toolbar .note_attributes label.checkbox_button input[type="checkbox"] {
+    display: none;
+}
+.noteeditor .toolbar .note_attributes label.checkbox_button input[type="checkbox"] + div.button {
+    display: inline-block;
+    height: 28px;
+    width: 20px;
+    line-height: 30px;
+    font-size: 18px;
+    border: 1px solid #666;
+    background-color: #fff;
+    background-position: 0px 6px;
+    background-repeat: no-repeat;
+}
+.noteeditor .toolbar .note_attributes label.checkbox_button input[type="checkbox"]:checked + div.button {
+    background-color: #8f8;
+}
+.noteeditor .toolbar .note_attributes label.checkbox_button input[type="checkbox"]:disabled + div.button {
+    background-color: #ddd;
+    color: #888;
+}
+.noteeditor .toolbar .note_attributes label.checkbox_button input[type="checkbox"] + div.button.bemol {
+    background-image: url(images/bemol.png);
+}
+.noteeditor .toolbar .note_attributes label.checkbox_button input[type="checkbox"] + div.button.sharp {
+    background-image: url(images/sharp.png);
+}
+.noteeditor .toolbar .note_attributes label.checkbox_button input[type="checkbox"] + div.button.dot {
+    background-image: url(images/dot.png);
+}
+.noteeditor .toolbar .note_attributes label.checkbox_button input[type="checkbox"] + div.button.sharp {}
+.noteeditor .toolbar .note_attributes label.checkbox_button input[type="checkbox"] + div.button.dot {}
+
+.noteeditor .toolbar .delete_note {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #666;
+    background: url("images/cross.png") no-repeat;
+    background-position: -1px -1px;
+}
+.noteeditor .toolbar .add_note {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #666;
+}
+.noteeditor .toolbar .add_note.add_note_1 {
+    background: url("images/note1_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_note_2 {
+    background: url("images/note2_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_note_4 {
+    background: url("images/note4_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_note_8 {
+    background: url("images/note8_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_note_16 {
+    background: url("images/note16_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_note_32 {
+    background: url("images/note32_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_rest_1 {
+    background: url("images/rest1_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_rest_2 {
+    background: url("images/rest2_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_rest_4 {
+    background: url("images/rest4_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_rest_8 {
+    background: url("images/rest8_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_rest_16 {
+    background: url("images/rest16_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+.noteeditor .toolbar .add_note.add_rest_32 {
+    background: url("images/rest32_small.png") no-repeat;
+    background-position: 7px 2px;
+}
+
+.noteeditor .toolbar .transposition_panel {}
+.noteeditor .toolbar .transposition_panel button {
+    height: 30px;  width: 30px;  border: 1px solid #666;
+    background-color: #fff;
+}
+.noteeditor .toolbar .transposition_panel button.transpose_up {
+    background: url("images/transpose_up.png") no-repeat;
+    background-position: 0px -2px;
+}
+.noteeditor .toolbar .transposition_panel button.transpose_down {
+    background: url("images/transpose_down.png") no-repeat;
+}
+
+.noteeditor .notesheet .clef {
+    position: absolute;
+    width: 40px;
+    height: 95px;
+    left: 5px;
+    top: 135px;
+}
+.noteeditor .notesheet .clef.treble {
+    background: url("images/treble_clef.png") no-repeat;
+}
+
+.noteeditor .lyrics {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: #ddd;
+    top: 323px;
+}
+.noteeditor .lyrics input[type="text"] {
+    position: absolute;
+    top: 5px;
+}
+.noteeditor .lyrics span.lyric {
+    position: absolute;
+    top: 8px;
+    font-size: 14px;
+}
+.noteeditor .lyrics .caption {
+    position: relative;
+    top: 9px;
+    left: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.noteeditor .lyrics .caption span {}
+
+.note {
+    position: absolute;
+    width: 28px;
+    height: 46px;
+    background: none;
+}
+.note1 {
+    background-image: url("images/note1.png");
+}
+.note2 {
+    background-image: url("images/note2.png");
+}
+.note4 {
+    background-image: url("images/note4.png");
+}
+.note8 {
+    background-image: url("images/note8.png");
+}
+.note16 {
+    background-image: url("images/note16.png");
+}
+.note32 {
+    background-image: url("images/note32.png");
+}
+.rest1 {
+    background-image: url("images/rest1.png");
+}
+.rest2 {
+    background-image: url("images/rest2.png");
+}
+.rest4 {
+    background-image: url("images/rest4.png");
+}
+.rest8 {
+    background-image: url("images/rest8.png");
+}
+.rest16 {
+    background-image: url("images/rest16.png");
+}
+.rest32 {
+    background-image: url("images/rest32.png");
+}
+.note.selected {
+    border: 1px solid #f00;
+    margin: -1px 0px 0px -1px;
+}
+.note .alteration {
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: -18px;
+    top: 28px;
+}
+.note.sharp .alteration {
+    display: block;
+    background-image: url("images/sharp.png");
+}
+.note.bemol .alteration {
+    display: block;
+    background-image: url("images/bemol.png");
+}
+.note.becarre .alteration {
+    display: block;
+    background-image: url("images/becarre.png");
+}
+.note .dot {
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 12px;
+    top: 28px;
+}
+.note.dotted .dot {
+    display: block;
+    background-image: url("images/dot.png");
+}
+.note.rest .dot {
+    top: 7px;
+    left: 20px;
+}
+.note .line {
+    display: none;
+    position: absolute;
+    top: 38px;
+    left: -7px;
+    width: 29px;
+    height: 14px;
+    /* border-top: 1px solid #000; */
+    background: url(images/lines2.png) repeat;
+    background-position-y: 0px;
+}
+.note.selected .line {
+    /*top: 39px;*/
+}
+.note.lined .line {
+    display: block;
+}
