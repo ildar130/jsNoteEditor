@@ -1,6 +1,6 @@
-# noteeditor
+# jsNoteEditor
 
-**jQuery plugin for simple one-voice music note editing.**
+**jQuery plugin for simple one-voice music notes editing.**
 
 This plugin adds a simple music note editor onto your web page.
 
