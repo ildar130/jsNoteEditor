@@ -89,6 +89,6 @@ Example:
 * jQuery
 * jQuery UI
 
-## Note symbols
+## Credits
 
 Note symbols are based on note symbols by jaschon ([https://openclipart.org/user-detail/jaschon](https://openclipart.org/user-detail/jaschon))

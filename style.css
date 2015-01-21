@@ -1,18 +1,8 @@
-/*
-
-Copyright (c) 2014 Ildar Ahmadullin
-
-This Source Code Form is subject to the terms of the Mozilla Public
-License, v. 2.0. If a copy of the MPL was not distributed with this
-file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
-*/
-
 .clear {
     clear: both;
 }
 
-.noteeditor .notesheet {
+.notesheet {
     position: relative;
     width: 100%;
     height: 390px;
@@ -21,7 +11,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     overflow-x: scroll;
     overflow-y: hidden;
 }
-.noteeditor .notesheet .cursor {
+.notesheet .cursor {
     position: absolute;
     width: 10px;
     height: 86px;
@@ -30,7 +20,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     background: rgba(200, 0, 0, 0.3);
     display: none;
 }
-.noteeditor .notesheet .cursor.on {
+.notesheet .cursor.on {
     display: block;
 }
 
@@ -81,6 +71,26 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     width: 30px;
     border: 1px solid #666;
     background: url("images/cross.png") no-repeat;
+    background-position: -1px -1px;
+    margin: 0px 3px;
+}
+.noteeditor .toolbar .delete_note:disabled {
+    background-color: #ddd;
+    color: #888;
+}
+.noteeditor .toolbar .delete_note_right {
+    height: 30px;
+    width: 52px;
+    border: 1px solid #666;
+    background: url("images/crossr.png") no-repeat;
+    background-position: -1px -1px;
+    margin-right: 5px;
+}
+.noteeditor .toolbar .delete_note_left {
+    height: 30px;
+    width: 52px;
+    border: 1px solid #666;
+    background: url("images/crossl.png") no-repeat;
     background-position: -1px -1px;
 }
 .noteeditor .toolbar .add_note {
@@ -190,6 +200,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     position: absolute;
     width: 28px;
     height: 46px;
+    /*background: #666;*/
     background: none;
 }
 .note1 {
@@ -278,9 +289,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
     /* border-top: 1px solid #000; */
     background: url(images/lines2.png) repeat;
     background-position-y: 0px;
-}
-.note.selected .line {
-    /*top: 39px;*/
 }
 .note.lined .line {
     display: block;

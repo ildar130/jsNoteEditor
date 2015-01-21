@@ -1,5 +1,5 @@
 // noteeditor.js: A one-voice music notes editor.
-// Version 0.1.0
+// Version 0.1.1
 // 
 // Copyright (c) 2015 Ildar Ahmadullin
 // 
@@ -19,7 +19,9 @@
 		// Strings translations
 		messagesTranslations = {
 			'en': {
-				'deleteButtonTitle': 'Delete symbol on the right',
+				'deleteButtonTitle': 'Delete selected symbol',
+				'deleteButtonTitleRight': 'Delete symbol on the right',
+				'deleteButtonTitleLeft': 'Delete symbol on the left',
 				'insertNote': 'Insert note',
 				'insertRest': 'Insert rest',
 				'onOffFlat': 'Flat on/off',
@@ -30,7 +32,9 @@
 				'lyrics': 'Lyrics'
 			},
 			'ru': {
-				'deleteButtonTitle': 'Удалить справа от курсора',
+				'deleteButtonTitle': 'Удалить выбранную ноту',
+				'deleteButtonTitleRight': 'Удалить справа от курсора',
+				'deleteButtonTitleLeft': 'Удалить слева от курсора',
 				'insertNote': 'Вставить ноту',
 				'insertRest': 'Вставить паузу',
 				'onOffFlat': 'Вкл/выкл бемоль',
@@ -122,6 +126,8 @@
 			function DisableNoteAttributesToolbar() {
 				var NoteAttrToolbar = Toolbar.find('.note_attributes').eq(0);
 				NoteAttrToolbar.find('input').prop('disabled', true);
+				
+				Toolbar.find('.delete_note').eq(0).prop('disabled', true);
 			}
 			
 			function EnableNoteAttributesToolbar(name) {
@@ -132,6 +138,8 @@
 				else {
 					NoteAttrToolbar.find('input').prop('disabled', false);
 				}
+				
+				Toolbar.find('.delete_note').eq(0).prop('disabled', false);
 			}
 			
 			function LoadNotePropertiesToToolbar(elem) {
@@ -332,6 +340,10 @@
 			}
 			
 			function DeleteNoteElement(elem) {
+				if (elem.hasClass('selected')) {
+					DisableNoteAttributesToolbar();
+				}
+
 				elem.remove();
 			}
 			
@@ -430,7 +442,7 @@
 					return;
 				}
 				
-				if (pos >= Notes.length) {
+				if ((pos >= Notes.length)||(pos < 0)) {
 					return;
 				}
 				
@@ -531,10 +543,25 @@
 				SetCursorPosition(cursorPosition+1);
 			}
 			
+			function DeleteSelectedNote() {
+				var CurNote = GetSelectedNote();
+				if (CurNote['index'] !== null) {
+					DeleteNote(CurNote['index']);
+				}
+			}
+
 			function DeleteNoteAtCursor() {
 				var cursorPosition = GetCursorPosition();
 				DeleteNote(cursorPosition);
 				SetCursorPosition(cursorPosition);
+			}
+
+			function DeleteNoteBeforeCursor() {
+				var cursorPosition = GetCursorPosition();
+				if (cursorPosition > 0) {
+					DeleteNote(cursorPosition-1);
+					SetCursorPosition(cursorPosition-1);
+				}
 			}
 
 			// Array with notes
@@ -789,7 +816,6 @@
 						
 						for (var i = 0; i < obj['notes'].length; i++) {
 							var noteObj = {};
-							// alert(JSON.stringify(obj['notes'][i]));
 							
 							if (obj['notes'][i]['element_type'] == 'note') {
 								var note = GetNoteByID(obj['notes'][i]['note_id']);
@@ -873,7 +899,9 @@
 			var Toolbar = $(''
 				+ '<div class="toolbar">'
 					+ '<div class="panel">'
+						+ '<button class="delete_note_left" title="'+langMsgs['deleteButtonTitleLeft']+'"></button>'
 						+ '<button class="delete_note" title="'+langMsgs['deleteButtonTitle']+'"></button>'
+						+ '<button class="delete_note_right" title="'+langMsgs['deleteButtonTitleRight']+'"></button>'
 						+ '<button class="add_note add_note_1" title="'+langMsgs['insertNote']+'"></button>'
 						+ '<button class="add_note add_note_2" title="'+langMsgs['insertNote']+'"></button>'
 						+ '<button class="add_note add_note_4" title="'+langMsgs['insertNote']+'"></button>'
@@ -1070,7 +1098,19 @@
 			
 			// "Delete note" button
 			Toolbar.find('button.delete_note').click(function() {
+				DeleteSelectedNote();
+				return false;
+			});
+			
+			// "Delete note on the right" button
+			Toolbar.find('button.delete_note_right').click(function() {
 				DeleteNoteAtCursor();
+				return false;
+			});
+			
+			// "Delete note on the left" button
+			Toolbar.find('button.delete_note_left').click(function() {
+				DeleteNoteBeforeCursor();
 				return false;
 			});
 			
