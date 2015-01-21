@@ -1,8 +1,21 @@
+/*
+
+style.css: The jsNoteEditor stylesheet.
+Version 0.1.1
+
+Copyright (c) 2015 Ildar Ahmadullin
+
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+*/
+
 .clear {
     clear: both;
 }
 
-.notesheet {
+.noteeditor .notesheet {
     position: relative;
     width: 100%;
     height: 390px;
@@ -11,7 +24,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
 }
-.notesheet .cursor {
+.noteeditor .notesheet .cursor {
     position: absolute;
     width: 10px;
     height: 86px;
@@ -20,7 +33,7 @@
     background: rgba(200, 0, 0, 0.3);
     display: none;
 }
-.notesheet .cursor.on {
+.noteeditor .notesheet .cursor.on {
     display: block;
 }
 
