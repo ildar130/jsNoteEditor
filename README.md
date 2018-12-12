@@ -6,7 +6,7 @@ This plugin adds a simple music note editor onto your web page.
 
 ## Demo
 
-Demo is available [here](http://demo.polarfox.ws/jsnoteeditor/).
+Demo is available [here](http://demo.swampyplace.com/jsnoteeditor/).
 
 ## Usage
 
